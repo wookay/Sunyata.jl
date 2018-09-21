@@ -1,16 +1,17 @@
 # module Sunyata.DeepSpeech
 
 using JSON2 # JSON2.read
+using PyCall # @pyimport
+using WAV # wavread wavwrite WAVE_FORMAT_PCM
 
+#=
 const package_manager = "pip3"
 installed_packages = JSON2.read(read(`$package_manager list --format=json`, String))
 speech_to_text_engine = "deepspeech"
 if !any(x->x.name == speech_to_text_engine, installed_packages)
     run(`$package_manager install $speech_to_text_engine`)
 end
-
-using PyCall # @pyimport
-using WAV # wavread wavwrite WAVE_FORMAT_PCM
+=#
 
 
 # code from https://github.com/mozilla/DeepSpeech/blob/master/native_client/python/client.py
