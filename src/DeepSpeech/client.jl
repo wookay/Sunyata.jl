@@ -10,7 +10,7 @@ if !any(x->x.name == speech_to_text_engine, installed_packages)
 end
 
 using PyCall # @pyimport
-using WAV # wavread wavwrite
+using WAV # wavread wavwrite WAVE_FORMAT_PCM
 
 
 # code from https://github.com/mozilla/DeepSpeech/blob/master/native_client/python/client.py
@@ -51,16 +51,14 @@ function get_model(modeldir::String)
     return ds
 end
 
-function convert_samplerate(samples, fs, nbits)
+function convert_samplerate(samples, fs)
     buf = IOBuffer()
-    wavwrite(samples, buf, Fs=fs, nbits=nbits, compression=WAVE_FORMAT_PCM)
+    wavwrite(samples, buf, Fs=fs, compression=WAVE_FORMAT_PCM)
     return reinterpret(Int16, buf.data)
 end
 
-function stt(ds, audiofile::String)
-    samples, sample_rate, nbits, opt = wavread(audiofile)
-    fs = 16000
-    audio = convert_samplerate(samples[:,1], fs, nbits)
+function stt(ds, samples, fs)
+    audio = convert_samplerate(samples[:,1], fs)
     return ds[:stt](audio, fs)
 end
 

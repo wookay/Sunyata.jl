@@ -30,4 +30,9 @@ Loading language model from files models/lm.binary models/trie
 # Requirements
   - A TensorFlow implementation of Baidu's DeepSpeech architecture https://github.com/mozilla/DeepSpeech
   - [Julia 1.0](https://julialang.org) and packages
-    - [Phonetics.jl](https://github.com/Betawolf/Phonetics.jl), [WAV.jl](https://github.com/dancasimiro/WAV.jl), [JSON2.jl](https://github.com/quinnj/JSON2.jl), [PyCall.jl](https://github.com/JuliaPy/PyCall.jl)
+    - [Phonetics.jl](https://github.com/Betawolf/Phonetics.jl)
+    - [DSP.jl](https://github.com/JuliaDSP/DSP.jl)
+    - [PolynomialRoots.jl](https://github.com/giordano/PolynomialRoots.jl)
+    - [WAV.jl](https://github.com/dancasimiro/WAV.jl)
+    - [JSON2.jl](https://github.com/quinnj/JSON2.jl)
+    - [PyCall.jl](https://github.com/JuliaPy/PyCall.jl)
