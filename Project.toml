@@ -1,0 +1,10 @@
+authors = ["WooKyoung Noh <wookay.noh@gmail.com>"]
+name = "Sunyata"
+uuid = "cff2b2ba-bc24-11e8-1300-3fbdf5197595"
+version = "0.1.0"
+
+[deps]
+Phonetics = "7e2a9768-7bc0-50b3-a796-3c4cdce8b7d1"
+WAV = "8149f6b0-98f6-5db9-b78f-408fbbb8ef88"
+JSON2 = "2535ab7d-5cd8-5a07-80ac-9b1792aadce3"
+PyCall = "438e738f-606a-5dbb-bf0a-cddfbfd45ab0"
