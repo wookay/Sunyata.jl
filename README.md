@@ -1,4 +1,4 @@
-# Sunyata 🔆
+# Sunyata 💋
 
 Speech to Text using DeepSpeech
 
