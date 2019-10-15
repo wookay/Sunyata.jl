@@ -1,7 +1,7 @@
 using Test
 using PyCall
 
-@pyimport numpy as np
+np = pyimport("numpy")
 
 output = [0x01, 0x02, 0x03, 0x04]
 audio = np.frombuffer(output, np.int16)

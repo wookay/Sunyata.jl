@@ -1,6 +1,5 @@
 using Sunyata # Acoustic
 using WAV # wavread WAVE_FORMAT_PCM
-using Plots # scatter
 
 function get_samplebuf(samples::Vector{T}, sample_length, i, stop) where {T}
     sample_length > stop ? samples[i:stop] : vcat(samples[i:end], zeros(T, stop-sample_length))
@@ -14,8 +13,8 @@ mono = samples[:,1]
 step = 160 # 16000 * 0.01s
 sample_length = length(mono)
 
-x = []
-y = []
+x = Float64[]
+y = Float64[]
 for i in range(1, step=step, stop=sample_length)
     buf = get_samplebuf(mono, sample_length, i, i+step)
     frqs = Acoustic.get_formants(buf, fs)
@@ -28,7 +27,6 @@ for i in range(1, step=step, stop=sample_length)
 end
 
 
-# using UnicodePlots
-unicodeplots()
-plt = scatter(x, y; xlabel="F1", ylabel="F2")
+using UnicodePlots
+plt = scatterplot(x, y; xlabel="F1", ylabel="F2")
 show(stdout, MIME"text/plain"(), plt)

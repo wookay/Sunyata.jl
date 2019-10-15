@@ -1,7 +1,7 @@
 # module Sunyata.DeepSpeech
 
 using JSON2 # JSON2.read
-using PyCall # @pyimport
+using PyCall # pyimport
 using WAV # wavread wavwrite WAVE_FORMAT_PCM
 
 #=
@@ -16,7 +16,7 @@ end
 
 # code from https://github.com/mozilla/DeepSpeech/blob/master/native_client/python/client.py
 
-@pyimport deepspeech # stt
+deepspeech = pyimport("deepspeech") # stt
 
 # Beam width used in the CTC decoder when building candidate transcriptions
 const BEAM_WIDTH = 500
@@ -48,7 +48,7 @@ function get_model(modeldir::String)
     println("Loading model from file ", args.model)
     ds = deepspeech.Model(normpath(modeldir, args.model), N_FEATURES, N_CONTEXT, normpath(modeldir, args.alphabet), BEAM_WIDTH)
     println("Loading language model from files ", args.lm, " ", args.trie)
-    ds[:enableDecoderWithLM](normpath(modeldir, args.alphabet), normpath(modeldir, args.lm), normpath(modeldir, args.trie), LM_WEIGHT, VALID_WORD_COUNT_WEIGHT)
+    ds.enableDecoderWithLM(normpath(modeldir, args.alphabet), normpath(modeldir, args.lm), normpath(modeldir, args.trie), LM_WEIGHT, VALID_WORD_COUNT_WEIGHT)
     return ds
 end
 
@@ -60,7 +60,7 @@ end
 
 function stt(ds, samples, fs)
     audio = convert_samplerate(samples[:,1], fs)
-    return ds[:stt](audio, fs)
+    return ds.stt(audio, fs)
 end
 
 # module Sunyata.DeepSpeech
