@@ -10,3 +10,6 @@ PolynomialRoots = "3a141323-8675-5d76-9d11-e1df1406c778"
 WAV = "8149f6b0-98f6-5db9-b78f-408fbbb8ef88"
 JSON2 = "2535ab7d-5cd8-5a07-80ac-9b1792aadce3"
 PyCall = "438e738f-606a-5dbb-bf0a-cddfbfd45ab0"
+
+[compat]
+DSP = "0.6"
